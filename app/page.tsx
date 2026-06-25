@@ -1,65 +1,133 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+  const [bonus, setBonus] = useState("");
+  const [insurance, setInsurance] = useState("15");
+  const [tax, setTax] = useState("10");
+
+  const bonusNum = Number(bonus) || 0;
+  const insuranceNum = Number(insurance) || 0;
+  const taxNum = Number(tax) || 0;
+
+  const insuranceAmount = Math.floor(bonusNum * (insuranceNum / 100));
+  const taxAmount = Math.floor(bonusNum * (taxNum / 100));
+  const totalDeduction = insuranceAmount + taxAmount;
+  const takeHome = bonusNum - totalDeduction;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
+        <h1 className="text-2xl font-bold mb-3">
+          ボーナス手取り計算ツール
+        </h1>
+
+        <p className="text-gray-700 mb-6">
+          ボーナスの支給額から社会保険料や税金を差し引いた、おおよその手取り額を計算できます。
+        </p>
+
+        <div className="space-y-4">
+          <div>
+            <label>ボーナス支給額（円）</label>
+            <input
+              type="number"
+              value={bonus}
+              onChange={(e) => setBonus(e.target.value)}
+              className="w-full border p-2 rounded mt-1"
+              placeholder="例：500000"
+            />
+          </div>
+
+          <div>
+            <label>社会保険料（%）</label>
+            <input
+              type="number"
+              value={insurance}
+              onChange={(e) => setInsurance(e.target.value)}
+              className="w-full border p-2 rounded mt-1"
+            />
+          </div>
+
+          <div>
+            <label>税金（%）</label>
+            <input
+              type="number"
+              value={tax}
+              onChange={(e) => setTax(e.target.value)}
+              className="w-full border p-2 rounded mt-1"
+            />
+          </div>
+        </div>
+
+        <div className="mt-8 space-y-2 text-lg border-t pt-6">
+          <p>社会保険料: ¥{insuranceAmount.toLocaleString()}</p>
+          <p>税金: ¥{taxAmount.toLocaleString()}</p>
+          <p>控除額合計: ¥{totalDeduction.toLocaleString()}</p>
+
+          <p className="font-bold text-green-600 text-xl">
+            手取り額: ¥{takeHome.toLocaleString()}
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <section className="mt-10">
+          <h2 className="text-xl font-bold mb-3">
+            ボーナス手取り計算ツールについて
+          </h2>
+          <p className="text-gray-700 leading-relaxed">
+            このツールは、ボーナスの支給額に対して社会保険料や税金の割合を入力し、
+            おおよその控除額と手取り額を確認するための簡易計算ツールです。
+            実際の手取り額は勤務先、扶養状況、前月給与、社会保険料率などによって変わるため、
+            目安としてご利用ください。
+          </p>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="text-xl font-bold mb-3">他の便利ツール</h2>
+          <ul className="list-disc pl-6 space-y-2 text-blue-600 underline">
+            <li>
+              <a href="https://wage-calc-tawny.vercel.app/">
+                時給計算ツール
+              </a>
+            </li>
+            <li>
+              <a href="https://overtime-calc.vercel.app/">
+                残業代計算ツール
+              </a>
+            </li>
+            <li>
+              <a href="https://take-home-pay-calc.vercel.app/">
+                手取り計算ツール
+              </a>
+            </li>
+            <li>
+              <a href="https://annual-income-calc.vercel.app/">
+                年収計算ツール
+              </a>
+            </li>
+          </ul>
+        </section>
+<section className="mt-10">
+  <h2 className="text-xl font-bold mb-3">
+    ボーナス手取りの計算方法
+  </h2>
+
+  <p className="text-gray-700 leading-relaxed">
+    ボーナス（賞与）の手取り額は、
+    支給額から社会保険料や所得税を差し引いて計算されます。
+    会社員の場合、健康保険料・厚生年金保険料・雇用保険料などが控除され、
+    さらに所得税が引かれます。
+    このツールでは簡単に概算の手取り額を確認できます。
+  </p>
+</section>
+        <footer className="mt-10 pt-6 border-t text-sm text-gray-500">
+          <p>© ANT FARM</p>
+          <Link href="/privacy-policy" className="underline">
+            プライバシーポリシー
+          </Link>
+        </footer>
+      </div>
+    </main>
   );
 }
