@@ -121,6 +121,18 @@ export default function Home() {
     このツールでは簡単に概算の手取り額を確認できます。
   </p>
 </section>
+<section className="mt-10">
+  <h2 className="text-xl font-bold mb-3">
+    このサイトについて
+  </h2>
+
+  <p className="text-gray-700 leading-relaxed">
+    ANT FARMでは、日常生活や仕事に役立つ無料Webツールを公開しています。
+    このボーナス手取り計算ツールでは、
+    賞与支給額から控除額を差し引いたおおよその手取り額を簡単に確認できます。
+    インストール不要でスマホからも利用できます。
+  </p>
+</section>
         <footer className="mt-10 pt-6 border-t text-sm text-gray-500">
           <p>© ANT FARM</p>
           <Link href="/privacy-policy" className="underline">

@@ -6,7 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-
-    sitemap: "https://bonus-calc.vercel.app/sitemap.xml",
+    sitemap: "https://bonus-calc-six.vercel.app/sitemap.xml",
   };
 }
