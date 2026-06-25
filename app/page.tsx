@@ -84,29 +84,57 @@ export default function Home() {
         </section>
 
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-3">他の便利ツール</h2>
-          <ul className="list-disc pl-6 space-y-2 text-blue-600 underline">
-            <li>
-              <a href="https://wage-calc-tawny.vercel.app/">
-                時給計算ツール
-              </a>
-            </li>
-            <li>
-              <a href="https://overtime-calc.vercel.app/">
-                残業代計算ツール
-              </a>
-            </li>
-            <li>
-              <a href="https://take-home-pay-calc.vercel.app/">
-                手取り計算ツール
-              </a>
-            </li>
-            <li>
-              <a href="https://annual-income-calc.vercel.app/">
-                年収計算ツール
-              </a>
-            </li>
-          </ul>
+         <h2 className="text-xl font-bold mb-3">
+  他の便利ツール
+</h2>
+
+<ul className="list-disc pl-6 space-y-2 text-blue-600 underline">
+  <li>
+    <a href="https://wage-calc-tawny.vercel.app/">
+      時給計算ツール
+    </a>
+  </li>
+  <li>
+    <a href="https://overtime-calc.vercel.app/">
+      残業代計算ツール
+    </a>
+  </li>
+  <li>
+    <a href="https://take-home-pay-calc.vercel.app/">
+      手取り計算ツール
+    </a>
+  </li>
+  <li>
+    <a href="https://annual-income-calc.vercel.app/">
+      年収計算ツール
+    </a>
+  </li>
+  <li>
+    <a href="https://monthly-salary-calc.vercel.app/">
+      月給計算ツール
+    </a>
+  </li>
+  <li>
+    <a href="https://daily-wage-calc.vercel.app/">
+      日給計算ツール
+    </a>
+  </li>
+  <li>
+    <a href="https://tax-calc-murex.vercel.app/">
+      所得税計算ツール
+    </a>
+  </li>
+  <li>
+    <a href="https://hourly-to-annual-calc.vercel.app/">
+      時給から年収計算ツール
+    </a>
+  </li>
+  <li>
+    <a href="https://working-days-calc.vercel.app/">
+      労働日数計算ツール
+    </a>
+  </li>
+</ul>
         </section>
 <section className="mt-10">
   <h2 className="text-xl font-bold mb-3">
